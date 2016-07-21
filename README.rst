@@ -2,7 +2,7 @@ dj-sso-server
 ==============
 ``dj-sso-server`` is a Django application that provides Single Sign-on feature for your project.
 
-The ``dj-sso-server`` application works as a **SSO provider** , you can use ``dj-sso-client`` (https://github.com/feifangit/dj-sso-client) as the **SSO client** in other projects need SSO.
+The ``dj-sso-server`` application works as a **SSO provider** , you can use ``dj-sso-client`` (https://github.com/tofu0913/dj-sso-client) as the **SSO client** in other projects need SSO.
 
 
 Installation
@@ -79,14 +79,14 @@ Customize SSO login page
 ------------------------
 You can add styles to your own SSO login page. simply create ``djsso/ssologin.html`` under the ``templates`` folder. Revamp it by imitating the 
 `original page  
-<https://github.com/feifangit/dj-sso-server/blob/master/djsso/templates/djsso/ssologin.html>`_
+<https://github.com/tofu0913/dj-sso-server/blob/master/djsso/templates/djsso/ssologin.html>`_
 
 
 SSOUser object
 ---------------
 ``dj-sso-client`` gets a ``SSOUser`` object whatever the User model is used in SSO provider project.
 
-See detail in README file of ``dj-sso-client`` (https://github.com/feifangit/dj-sso-client)
+See detail in README file of ``dj-sso-client`` (https://github.com/tofu0913/dj-sso-client)
 
 
 
@@ -96,4 +96,4 @@ We have a SSO provider application running on Heroku (https://dj-sso-sample.hero
 
 **Source code**: under ``example`` folder
 
-To try the demo out, check out the README file of ``dj-sso-client`` (https://github.com/feifangit/dj-sso-client)
+To try the demo out, check out the README file of ``dj-sso-client`` (https://github.com/tofu0913/dj-sso-client)
