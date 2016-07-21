@@ -11,7 +11,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='dj-sso-server2',
     version=__version__,
-    packages=['djssoserver2'],
+    packages=['djssoserver'],
     include_package_data=True,
     license='GPL v2.0',
     description='A Django SSO provider application',
