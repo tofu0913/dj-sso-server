@@ -65,18 +65,24 @@ def login(request):
     api_key = request.POST.get("api_key", request.GET.get("api_key"))
 
     if not (redirect_to and request_token and api_key):
-        return HttpResponse("parameter missing", status=403)
+        # return HttpResponse("parameter missing", status=403)
+        return TemplateResponse(request, 'djssoserver/403.html', {"errormsg":"parameter missing",
+                    "source":urlparse.urljoin(redirect_to, '/')}, status=403)
 
     rt = RequestToken.load_info(request_token)
     if not rt:
-        return HttpResponse("invalid request token", status=403)
+        # return HttpResponse("invalid request token", status=403)
+        return TemplateResponse(request, 'djssoserver/403.html', {"errormsg":"invalid request token",
+                    "source":urlparse.urljoin(redirect_to, '/')}, status=403)
 
     # verify remote host
     url_info_to = urlparse.urlparse(redirect_to)
     try:
         SSO.objects.get(host=url_info_to.netloc, credential__apikey=api_key)
     except SSO.DoesNotExist:
-        return HttpResponse("request deny for remote host", status=403)
+        # return HttpResponse("request deny for remote host", status=403)
+        return TemplateResponse(request, 'djssoserver/403.html', {"errormsg":"request deny for remote host",
+                    "source":urlparse.urljoin(redirect_to, '/')}, status=403)
 
     okresp = HttpResponseRedirect(append_tokens(redirect_to,
                                                 request_token=request_token,
