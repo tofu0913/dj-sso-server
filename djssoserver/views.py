@@ -105,6 +105,9 @@ def login(request):
         elif bContinueWithCurrentAccount == "no":  # confirmed: login with another account
             ssouser = AnonymousUser()
         else:  # ask to login with current account or switch to a new account, or login form if not logged-in
+            if request.GET.get("noconfirm", '0') == '1' and not ssouser.is_anonymous():
+                RequestToken.bind_info(request_token, request.user)
+                return okresp
             pass
 
     current_site = get_current_site(request)
